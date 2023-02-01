@@ -39,11 +39,11 @@ const Footer = () => {
                     <ul>
                         <li>
                             <span><i className = "fas fa-phone"></i></span>
-                            <span className = "fs-15">+678 004 5754</span>
+                            <span className = "fs-15">+91 82 7873 56 27</span>
                         </li>
                         <li>
                             <span><i className = "fas fa-envelope"></i></span>
-                            <span className = "fs-15">info@shophub.com</span>
+                            <span className = "fs-15">sushantbharwal@gmail.com</span>
                         </li>
                     </ul>
                 </div>

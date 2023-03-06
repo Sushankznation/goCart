@@ -8,17 +8,29 @@ import Loader from '../Loader/Loader';
 import {STATUS} from "../../utils/status";
 
 const SingleCategory = ({products, status}) => {
+
+    // Get the dispatch function from the Redux store
     const dispatch = useDispatch();
+
+    // Get the isModalVisible state from the Redux store
     const {isModalVisible} = useSelector((state) => state.modal);
 
+    // Handler function to show the modal with product details
     const viewModalHandler = (data) => {
+        // Dispatch an action to set the modal data to be displayed
         dispatch(setModalData(data));
+
+        // Dispatch an action to set the modal visibility to true
         dispatch(setIsModalVisible(true));
     }
 
+    // Show an error message if the product fetch status is ERROR
     if(status === STATUS.ERROR) return (<Error />);
+
+    // Show a loader if the product fetch status is LOADING
     if(status === STATUS.LOADING) return (<Loader />);
 
+    // Render the product items in a container with a section title
     return (
         <section className='cat-single py-5 bg-ghost-white'>
             { isModalVisible && <SingleProduct />}

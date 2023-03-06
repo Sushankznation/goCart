@@ -11,6 +11,7 @@ import store from "./store/store";
 function App() {
   return (
     <div className="App">
+    {/* // Redux Store */}
       <Provider store = {store}>
         <BrowserRouter>
           <Navbar />

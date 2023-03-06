@@ -9,6 +9,8 @@ const CartPage = () => {
     const dispatch = useDispatch();
     const {data: cartProducts, totalItems, totalAmount, deliveryCharge} = useSelector(state => state.cart);
 
+    // This effect will be triggered whenever the cartProducts state changes.
+    // It dispatches an action to calculate the total amount in the cart.
     useEffect(() => {
         dispatch(getCartTotal());
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,11 +41,14 @@ const CartPage = () => {
                     <h3 className = "text-uppercase fw-7 text-regal-blue ls-1">My Cart</h3>
                 </div>
                 {
+                    // If there are no products in the cart, show a message.
                     cartProducts.length === 0 ? emptyCartMsg : (
+                        // Otherwise, show the products in the cart.
                         <div className = "cart-content grid">
                             <div className='cart-left'>
                                 <div className = "cart-items grid">
                                     {
+                                        // Map through the cart products and display each product.
                                         cartProducts.map(cartProduct => (
                                             <div className='cart-item grid' key = {cartProduct.id}>
                                                 <div className='cart-item-img flex flex-column bg-white'>

@@ -1,20 +1,22 @@
+// Importing necessary packages and components
 import React, {useEffect} from 'react';
 import ProductList from '../../components/ProductList/ProductList';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProductsByCategory } from '../../store/categorySlice';
 import { useParams, Link } from 'react-router-dom';
-import "./CategoryPage.scss";
+import "./CategoryPage.scss"; // Importing styles
 
 const CategoryPage = () => {
     const dispatch = useDispatch();
-    const {id} = useParams();
-    const {catProductSingle: products, catProductSingleStatus: status} = useSelector((state) => state.category);
+    const {id} = useParams(); // Getting the category id from the URL
+    const {catProductSingle: products, catProductSingleStatus: status} = useSelector((state) => state.category); // Getting the products and their status from the Redux store
 
     useEffect(() => {
-      dispatch(fetchProductsByCategory(id, 'single'));
+      dispatch(fetchProductsByCategory(id, 'single')); // Dispatching an action to fetch products by category
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
+    // Rendering the Category page with Breadcrumbs and ProductList components
     return (
       <div className = "category-page">
         <div className = "container">
@@ -35,14 +37,14 @@ const CategoryPage = () => {
                 </span>
               </li>
               <li>
-                { products[0] && products[0].category.name}
+                { products[0] && products[0].category.name} {/* Displaying the name of the category */}
               </li>
             </ul>
           </div>
         </div>
-        <ProductList products = {products} status = {status} />
+        <ProductList products = {products} status = {status} /> {/* Passing the products and their status as props to the ProductList component */}
       </div>
     )
 }
 
-export default CategoryPage
+export default CategoryPage; // Exporting 

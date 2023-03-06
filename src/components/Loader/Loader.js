@@ -1,4 +1,5 @@
 import React from 'react';
+// import spinner 
 import { spinner } from '../../utils/images';
 import "./Loader.scss";
 

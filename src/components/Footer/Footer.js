@@ -1,11 +1,15 @@
 import React from 'react';
 import "./Footer.scss";
 
+// Functional component for the footer section of the webpage
 const Footer = () => {
   return (
+    // HTML for the footer section
     <footer className = "footer py-5 bg-dark">
         <div className = "container">
             <div className = "footer-content text-white grid">
+
+                {/* Links section */}
                 <div className = "footer-item text-center">
                     <h6 className = "fs-17 fw-6">Links</h6>
                     <ul>
@@ -16,6 +20,7 @@ const Footer = () => {
                     </ul>
                 </div>
 
+                {/* Policies section */}
                 <div className = "footer-item text-center">
                     <h6 className='fs-17 fw-6'>Policies</h6>
                     <ul>
@@ -25,8 +30,9 @@ const Footer = () => {
                     </ul>
                 </div>
 
+                {/* Company information section */}
                 <div className = "footer-item text-center">
-                    <h6 className='fs-17 fw-6'>About Shopping Hub</h6>
+                    <h6 className='fs-17 fw-6'>About goCart</h6>
                     <ul>
                         <li><a href = "/terms" className = "fs-15">Company Info</a></li>
                         <li><a href = "/cookies" className = "fs-15">Branches</a></li>
@@ -34,6 +40,7 @@ const Footer = () => {
                     </ul>
                 </div>
 
+                {/* Contact section */}
                 <div className = "footer-item text-center">
                     <h6 className='fs-17 fw-6'>Contact</h6>
                     <ul>
@@ -53,4 +60,5 @@ const Footer = () => {
   )
 }
 
+// Export the Footer component for use in other files
 export default Footer

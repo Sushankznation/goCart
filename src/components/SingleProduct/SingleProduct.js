@@ -1,18 +1,30 @@
 import React, {useState} from 'react';
 import "./SingleProduct.scss";
+
+// Importing the necessary Redux hooks
 import { useSelector, useDispatch } from 'react-redux';
 import { setIsModalVisible } from '../../store/modalSlice';
 import { addToCart } from '../../store/cartSlice';
+
+// Importing the necessary routing hooks
 import { useNavigate } from 'react-router-dom';
+
+// Importing a helper function for formatting prices
 import { formatPrice } from '../../utils/helpers';
 
 const SingleProduct = () => {
+
+  // Initializing the necessary Redux and routing hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // Initializing state for the product quantity
   const [qty, setQty] = useState(1);
 
+  // Getting the product data from the Redux store
   const { data: product } = useSelector(state => state.modal);
 
+  // Handler function for increasing the product quantity
   const increaseQty = () => {
     setQty((prevQty) => {
       let newQty = prevQty + 1;
@@ -20,6 +32,7 @@ const SingleProduct = () => {
     })
   }
 
+  // Handler function for decreasing the product quantity
   const decreaseQty = () => {
     setQty((prevQty) => {
       let newQty = prevQty - 1;
@@ -30,23 +43,31 @@ const SingleProduct = () => {
     })
   }
 
+  // Handler function for adding the product to the cart
   const addToCartHandler = (product) => {
+    // Calculating the total price for the selected quantity of the product
     let totalPrice = qty * product.price;
+    // Creating a temporary object for the product with additional data for the cart
     const tempProduct = {
       ...product,
       quantity: qty,
       totalPrice
     }
+    // Dispatching an action to add the product to the cart
     dispatch(addToCart(tempProduct));
+    // Hiding the modal and navigating to the cart page
     dispatch(setIsModalVisible(false));
     navigate('/cart');
   };
 
+  // Handler function for closing the modal if the user clicks outside of it
   const modalOverlayHandler = (e) => {
     if(e.target.classList.contains('overlay-bg')){
       dispatch(setIsModalVisible(false));
     }
   }
+
+  // Rendering the modal with the product details and quantity selector
 
   return (
     <div className='overlay-bg' onClick = {modalOverlayHandler}>
